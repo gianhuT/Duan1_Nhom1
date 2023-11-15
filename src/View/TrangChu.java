@@ -53,9 +53,8 @@ public class TrangChu extends javax.swing.JFrame {
         lblThongKe = new javax.swing.JLabel();
         lblNhanVien = new javax.swing.JLabel();
         lblBanHang = new javax.swing.JLabel();
-        thongtincanhan = new javax.swing.JLabel();
         lblDonHang = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblDoiTra = new javax.swing.JLabel();
         jDesktopPane = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,6 +70,11 @@ public class TrangChu extends javax.swing.JFrame {
         btnDangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDangXuatMouseClicked(evt);
+            }
+        });
+        btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangXuatActionPerformed(evt);
             }
         });
         jToolBar1.add(btnDangXuat);
@@ -100,24 +104,44 @@ public class TrangChu extends javax.swing.JFrame {
         btnKhuyenMai.setText("Khuyến mãi");
         btnKhuyenMai.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnKhuyenMai.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnKhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnKhuyenMaiMouseClicked(evt);
+            }
+        });
         jToolBar1.add(btnKhuyenMai);
 
         btnKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Clien list.png"))); // NOI18N
         btnKhachHang.setText("Khách hàng");
         btnKhachHang.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnKhachHang.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnKhachHangMouseClicked(evt);
+            }
+        });
         jToolBar1.add(btnKhachHang);
 
         btnHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Document.png"))); // NOI18N
         btnHoaDon.setText("Hóa đơn");
         btnHoaDon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHoaDon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHoaDonMouseClicked(evt);
+            }
+        });
         jToolBar1.add(btnHoaDon);
 
         btnThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Bar chart.png"))); // NOI18N
         btnThongKe.setText("Thống kê");
         btnThongKe.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnThongKe.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThongKeMouseClicked(evt);
+            }
+        });
         jToolBar1.add(btnThongKe);
         jToolBar1.add(jSeparator2);
 
@@ -221,13 +245,6 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
-        thongtincanhan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/menu.png"))); // NOI18N
-        thongtincanhan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                thongtincanhanMouseClicked(evt);
-            }
-        });
-
         lblDonHang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblDonHang.setForeground(new java.awt.Color(255, 255, 255));
         lblDonHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -239,13 +256,13 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Đổi - Trả");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblDoiTra.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblDoiTra.setForeground(new java.awt.Color(255, 255, 255));
+        lblDoiTra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDoiTra.setText("Đổi - Trả");
+        lblDoiTra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                lblDoiTraMouseClicked(evt);
             }
         });
 
@@ -253,7 +270,7 @@ public class TrangChu extends javax.swing.JFrame {
         pnlMenu.setLayout(pnlMenuLayout);
         pnlMenuLayout.setHorizontalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblDoiTra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuLayout.createSequentialGroup()
                 .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(lblHinh)
@@ -261,10 +278,6 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(pnlMenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlMenuLayout.createSequentialGroup()
-                        .addComponent(lblTenNhanVien)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(thongtincanhan))
                     .addComponent(lblBanHang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblDonHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblThongKe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -274,6 +287,7 @@ public class TrangChu extends javax.swing.JFrame {
                     .addComponent(lblSanPham, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlMenuLayout.createSequentialGroup()
                         .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTenNhanVien)
                             .addComponent(lblThoiGian)
                             .addComponent(lblVaiTro))
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -285,10 +299,8 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTenNhanVien)
-                    .addComponent(thongtincanhan))
-                .addGap(21, 21, 21)
+                .addComponent(lblTenNhanVien)
+                .addGap(30, 30, 30)
                 .addComponent(lblVaiTro)
                 .addGap(27, 27, 27)
                 .addComponent(lblThoiGian, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -297,7 +309,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblDoiTra, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -317,7 +329,7 @@ public class TrangChu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(pnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1004, Short.MAX_VALUE))
+                .addGap(0, 1234, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,23 +378,17 @@ public class TrangChu extends javax.swing.JFrame {
         jDesktopPane.add(tk).setVisible(true);
     }//GEN-LAST:event_lblThongKeMouseClicked
 
-    private void thongtincanhanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongtincanhanMouseClicked
-        ThongTinCaNhan cn = new ThongTinCaNhan();
-        jDesktopPane.removeAll();
-        jDesktopPane.add(cn).setVisible(true);
-    }//GEN-LAST:event_thongtincanhanMouseClicked
-
     private void lblDonHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDonHangMouseClicked
         DonHang dh = new DonHang();
         jDesktopPane.removeAll();
         jDesktopPane.add(dh).setVisible(true);
     }//GEN-LAST:event_lblDonHangMouseClicked
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void lblDoiTraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDoiTraMouseClicked
         DoiTraHang dt = new DoiTraHang();
         jDesktopPane.removeAll();
         jDesktopPane.add(dt).setVisible(true);
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_lblDoiTraMouseClicked
 
     private void lblKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhuyenMaiMouseClicked
         KhuyenMai km = new KhuyenMai();
@@ -399,6 +405,35 @@ public class TrangChu extends javax.swing.JFrame {
 
         new DoiMatKhau().setVisible(true);
     }//GEN-LAST:event_btnDoiMatKhauMouseClicked
+
+    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDangXuatActionPerformed
+
+    private void btnKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhuyenMaiMouseClicked
+        // TODO add your handling code here:
+        KhuyenMai km = new KhuyenMai();
+        jDesktopPane.removeAll();
+        jDesktopPane.add(km).setVisible(true);
+    }//GEN-LAST:event_btnKhuyenMaiMouseClicked
+
+    private void btnKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseClicked
+        // TODO add your handling code here:
+        KhachHang kh = new KhachHang();
+        jDesktopPane.removeAll();
+        jDesktopPane.add(kh).setVisible(true);
+    }//GEN-LAST:event_btnKhachHangMouseClicked
+
+    private void btnHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHoaDonMouseClicked
+
+    private void btnThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseClicked
+        // TODO add your handling code here:
+        ThongKe tk = new ThongKe();
+        jDesktopPane.removeAll();
+        jDesktopPane.add(tk).setVisible(true);
+    }//GEN-LAST:event_btnThongKeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -447,13 +482,13 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnKhuyenMai;
     private javax.swing.JButton btnThongKe;
     private javax.swing.JDesktopPane jDesktopPane;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblBanHang;
+    private javax.swing.JLabel lblDoiTra;
     private javax.swing.JLabel lblDonHang;
     private javax.swing.JLabel lblHinh;
     private javax.swing.JLabel lblKhachHang;
@@ -465,6 +500,5 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel lblThongKe;
     private javax.swing.JLabel lblVaiTro;
     private javax.swing.JPanel pnlMenu;
-    private javax.swing.JLabel thongtincanhan;
     // End of variables declaration//GEN-END:variables
 }
