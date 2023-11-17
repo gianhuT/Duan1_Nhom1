@@ -305,7 +305,7 @@ public class SanPham extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Mã SP", "Tên SP", "Số lượng tồn kho", "Chất liệu", "Màu sắc", "Kích cỡ", "Giá", "Ảnh"
+                "Mã SP", "Tên SP", "Số lượng tồn kho", "Đơn giá", "Chất liệu", "Màu sắc", "Kích cỡ", "Thương hiệu", "Ảnh"
             }
         ));
         jScrollPane10.setViewportView(tblDanhSachSP);

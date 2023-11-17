@@ -5,6 +5,7 @@ go
 
 
 
+
 CREATE TABLE NhaCungCap
 (
   MaNCC NVARCHAR(50) NOT NULL,
@@ -15,19 +16,13 @@ CREATE TABLE NhaCungCap
   PRIMARY KEY (MaNCC)
 );
 
-CREATE TABLE ThuongHieu
-(
-  MaTH NVARCHAR(50) NOT NULL,
-  TenTH NVARCHAR(225) NOT NULL,
-  MoTa NVARCHAR(225) NOT NULL,
-  PRIMARY KEY (MaTH)
-);
+
 
 CREATE TABLE KhachHang
 (
   MaKH NVARCHAR(50) NOT NULL,
   TenKH NVARCHAR(225) NOT NULL,
-  SDT NVARCHAR(225) NOT NULL,
+  SDT NVARCHAR(12) NOT NULL,
   DiaChi NVARCHAR(225) NOT NULL,
   Email NVARCHAR(225) NOT NULL,
   GioiTinh NVARCHAR(225) NOT NULL,
@@ -98,21 +93,29 @@ CREATE TABLE SanPham
   KichCo INT NOT NULL,
   ChatLieu NVARCHAR(225) NOT NULL,
   MoTa NVARCHAR(225) NOT NULL,
-  MaTH NVARCHAR(50) NOT NULL,
   MaNCC NVARCHAR(50) NOT NULL,
+  AnhSP NVARCHAR(225) NOT NULL,
   PRIMARY KEY (MaSP),
-  FOREIGN KEY (MaTH) REFERENCES ThuongHieu(MaTH),
   FOREIGN KEY (MaNCC) REFERENCES NhaCungCap(MaNCC)
+);
+
+CREATE TABLE ThuongHieu
+(
+  MaTH INT IDENTITY(1,1) PRIMARY KEY,
+  TenTH NVARCHAR(225) NOT NULL,
+  MoTa NVARCHAR(225) NULL,
+  MaSP NVARCHAR(50) NOT NULL,
+  FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP)
+
 );
 
 CREATE TABLE GiaBan
 (
   DonGia DECIMAL(20,0) NOT NULL,
-  NgayBD DATE NOT NULL,
-  NgayKT DATE NOT NULL,
-  MaGia INT NOT NULL,
+  NgayBD DATE NULL,
+  NgayKT DATE NULL,
+  MaGia INT IDENTITY(1,1) PRIMARY KEY,
   MaSP NVARCHAR(50) NOT NULL,
-  PRIMARY KEY (MaGia),
   FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP)
 );
 
@@ -147,13 +150,6 @@ VALUES
   ('NCC003', 'Puma Supplier', '555555555', '789 Sneaker Boulevard, Puma Village', 'puma_supplier@example.com'),
   ('NCC004', 'Converse Supplier', '333333333', '101 Sneaker Lane, Converse District', 'converse_supplier@example.com');
 
--- Insert data into ThuongHieu table
-INSERT INTO ThuongHieu (MaTH, TenTH, MoTa) 
-VALUES 
-   ('TH001', 'Adidas', N'Adidas là một trong những thương hiệu thể thao nổi tiếng trên toàn thế giới, chuyên sản xuất giày, quần áo và phụ kiện thể thao với thiết kế đẹp và chất lượng cao.'),
-  ('TH002', 'Nike', N'Nike là thương hiệu thể thao hàng đầu với đa dạng sản phẩm bao gồm giày, áo, và dụng cụ thể thao. Nike luôn nỗ lực mang lại sự đổi mới và hiệu suất tốt nhất cho người tiêu dùng.'),
-  ('TH003', 'Puma', N'Puma là thương hiệu thể thao quốc tế với lịch sử lâu dài, nổi tiếng với những sản phẩm thoải mái và phong cách độc đáo.'),
-  ('TH004', 'Converse', N'Converse là thương hiệu nổi tiếng với dòng sản phẩm giày Chuck Taylor All Star, là biểu tượng của văn hóa sneaker và thời trang.');
 
 -- Insert data into KhachHang table
 INSERT INTO KhachHang (MaKH, TenKH, SDT, DiaChi, Email, GioiTinh, NgaySinh, TichDiem, NhomKhachHang) 
@@ -168,8 +164,8 @@ INSERT INTO TaiKhoan (ID, TaiKhoan, MatKhau, VaiTro, TenNV, DiaChi, NgaySinh, Gi
 VALUES 
   ('ID001', 'sy levan', '123', N'Admin', N'Lê Văn Sỹ', N'Gò Vấp', '1990-01-01', N'Nam', 'sy@gmail.com', '0123456789', 'avatar1.jpg', 'Ca 1'),
   ('ID002', 'nhu tran', '123', N'Nhân viên', N'Trần Gia Như', N'Tân Bình', '1995-05-15', N'Nữ', 'nhu@gmail.com', '0987654321', 'avatar2.jpg', 'Ca 2'),
-  ('ID003', 'anh long', '9999', N'Nhân viên', N'Phan Văn Long', N'Quận 1', '1988-11-30', N'Nam', 'long@gmail.com', '0555555555', 'avatar3.jpg', 'Ca 3'),
-  ('ID004', 'phan thi', '123', N'Admin', N'Phan Thị', N'Quận 10', '2000-03-20', N'Nữ', 'thi@gmail.com', '0333333333', 'avatar4.jpg', 'Ca 4');
+  ('ID003', 'anh long', '9999', N'Nhân viên', N'Phan Văn Long', N'Quận 1', '1988-11-30', N'Nam', 'long@gmail.com', '0784928811', 'avatar3.jpg', 'Ca 3'),
+  ('ID004', 'phan thi', '123', N'Admin', N'Phan Thị', N'Quận 10', '2000-03-20', N'Nữ', 'thi@gmail.com', '0903006712', 'avatar4.jpg', 'Ca 4');
 
 -- Insert data into HoaDon table
 INSERT INTO HoaDon (MaHD, NgayTao, TinhTrang, ID, MaKH) 
@@ -196,20 +192,28 @@ VALUES
   ('KM004', N'Khuyến mãi 4', '2023-04-01', '2023-04-30', '25%', N'Chưa kích hoạt', N'Tặng sản phẩm');
 
 -- Insert data into SanPham table
-INSERT INTO SanPham (TenSP, MaSP, SoLuongTonKho, MauSac, KichCo, ChatLieu, MoTa, MaTH, MaNCC) 
+INSERT INTO SanPham (TenSP, MaSP, SoLuongTonKho, MauSac, KichCo, ChatLieu, MoTa, MaNCC, AnhSP) 
 VALUES 
-  ('UltraBoost', 'SP001', 50, N'Đen', 42, N'Da', N'Giày sneaker Adidas UltraBoost', 'TH001', 'NCC001'),
-  ('Air Max', 'SP002', 70, N'Trắng', 39, N'Vải', N'Giày sneaker Nike Air Max', 'TH002', 'NCC002'),
-  ('Calibrate Runner', 'SP003', 30, N'Đỏ', 38, N'Nỉ', N'Giày sneaker Puma Calibrate Runner', 'TH003', 'NCC003'),
-  ('Chuck Taylor All Star', 'SP004', 90, N'Xanh', 41, N'Da', N'Giày sneaker Converse Chuck Taylor All Star', 'TH004', 'NCC004');
+  ('UltraBoost', 'SP001', 50, N'Đen', 42, N'Da', N'Giày sneaker Adidas UltraBoost', 'NCC001','UltraBoost.avif'),
+  ('Air Max', 'SP002', 70, N'Trắng', 39, N'Vải', N'Giày sneaker Nike Air Max', 'NCC002', 'AirMax.jpg'),
+  ('Calibrate Runner', 'SP003', 30, N'Đỏ', 38, N'Nỉ', N'Giày sneaker Puma Calibrate Runner', 'NCC003', 'CalibrateRunner.jpeg'),
+  ('Chuck Taylor All Star', 'SP004', 90, N'Xanh', 41, N'Da', N'Giày sneaker Converse Chuck Taylor All Star', 'NCC004', 'ChuckTaylorAllStar.webp');
+
+-- Insert data into ThuongHieu table
+INSERT INTO ThuongHieu ( TenTH, MoTa, MaSP) 
+VALUES 
+   ( 'Adidas', N'Adidas là một trong những thương hiệu thể thao nổi tiếng trên toàn thế giới, chuyên sản xuất giày, quần áo và phụ kiện thể thao với thiết kế đẹp và chất lượng cao.','SP001'),
+  ( 'Nike', N'Nike là thương hiệu thể thao hàng đầu với đa dạng sản phẩm bao gồm giày, áo, và dụng cụ thể thao. Nike luôn nỗ lực mang lại sự đổi mới và hiệu suất tốt nhất cho người tiêu dùng.','SP002'),
+  ( 'Puma', N'Puma là thương hiệu thể thao quốc tế với lịch sử lâu dài, nổi tiếng với những sản phẩm thoải mái và phong cách độc đáo.','SP003'),
+  ( 'Converse', N'Converse là thương hiệu nổi tiếng với dòng sản phẩm giày Chuck Taylor All Star, là biểu tượng của văn hóa sneaker và thời trang.','SP004');
 
 -- Insert data into GiaBan table
-INSERT INTO GiaBan (DonGia, NgayBD, NgayKT, MaGia, MaSP) 
+INSERT INTO GiaBan (DonGia, NgayBD, NgayKT, MaSP) 
 VALUES 
-  ('500000', '2023-01-01', '2023-01-31', 1, 'SP001'),
-  ('700000', '2023-02-01', '2023-02-28', 2, 'SP002'),
-  ('600000', '2023-03-01', '2023-03-31', 3, 'SP003'),
-  ('800000', '2023-04-01', '2023-04-30', 4, 'SP004');
+  ('500000', '2023-01-01', '2023-01-31', 'SP001'),
+  ('700000', '2023-02-01', '2023-02-28', 'SP002'),
+  ('600000', '2023-03-01', '2023-03-31', 'SP003'),
+  ('800000', '2023-04-01', '2023-04-30', 'SP004');
 
 -- Insert data into HoaDonChiTiet table
 INSERT INTO HoaDonChiTiet (SoLuong, ThanhTien, MaSP, MaHD) 
@@ -228,3 +232,56 @@ VALUES
   ('SP004', 'KM004');
 
 
+  CREATE or alter PROC InsertDataSanPham
+	@TenSP NVARCHAR(225),
+    @MaSP NVARCHAR(50),
+    @SoLuongTonKho INT,
+    @MauSac NVARCHAR(225),
+    @KichCo INT,
+    @ChatLieu NVARCHAR(225),
+    @MoTa NVARCHAR(225),
+    @AnhSP NVARCHAR(225),
+	@MaNCC NVARCHAR(50),
+    @DonGia DECIMAL(20, 0),
+    @TenTH NVARCHAR(225)
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	BEGIN TRY
+	BEGIN TRANSACTION;
+		--Insert vào bảng sản phẩm
+		INSERT INTO SanPham(MaSP,TenSP,SoLuongTonKho,MauSac,KichCo,ChatLieu,MoTa,AnhSP,MaNCC) 
+		VALUES(@MaSP,@TenSP,@SoLuongTonKho,@MauSac,@KichCo,@ChatLieu,@MoTa,@AnhSP,@MaNCC)
+		 -- Lấy MaSP vừa được thêm vào từ bảng SanPham
+        DECLARE @InsertedMaSP NVARCHAR(50);
+        SET @InsertedMaSP = (SELECT MaSP FROM SanPham WHERE MaSP = @MaSP);
+		-- Insert bảng Giá bán
+		INSERT INTO GiaBan(DonGia, MaSP)
+		VALUES(@DonGia,@InsertedMaSP)
+		-- Insert bảng Thương Hiệu
+		INSERT INTO ThuongHieu(TenTH, MaSP)
+		VALUES(@TenTH,@InsertedMaSP)
+
+		COMMIT TRANSACTION
+	END TRY
+	BEGIN CATCH
+	IF @@TRANCOUNT > 0
+        ROLLBACK TRANSACTION;
+        -- Xử lý lỗi hoặc thông báo lỗi ở đây
+        SELECT ERROR_MESSAGE() AS ErrorMessage;
+    END CATCH;
+END
+
+EXEC InsertDataSanPham
+	@MaSP = N'SP005',
+    @TenSP = N'sY',
+    @SoLuongTonKho = 100,
+    @MauSac = N'Đen',
+    @KichCo = 42,
+    @ChatLieu = N'Da',
+    @MoTa = N'Mô tả sản phẩm',
+    @AnhSP = N'Đường dẫn ảnh sản phẩm',
+	@MaNCC = 'NCC002',
+    @DonGia = 5000000,
+	@TenTH = N'Nike';

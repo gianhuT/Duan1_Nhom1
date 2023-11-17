@@ -158,7 +158,7 @@ public class NhanVien extends javax.swing.JInternalFrame {
                             .addComponent(lblThoiGian, javax.swing.GroupLayout.Alignment.LEADING))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMenuLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 18, Short.MAX_VALUE)
                         .addComponent(lblHinh)
                         .addGap(22, 22, 22))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMenuLayout.createSequentialGroup()
@@ -209,7 +209,7 @@ public class NhanVien extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 1120, 220));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 1090, 220));
 
         jPanel4.setBackground(new java.awt.Color(0, 153, 255));
 
@@ -294,7 +294,7 @@ public class NhanVien extends javax.swing.JInternalFrame {
                                 .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(93, 93, 93)
+                        .addGap(39, 39, 39)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,37 +368,37 @@ public class NhanVien extends javax.swing.JInternalFrame {
         jButton1.setBackground(new java.awt.Color(102, 255, 102));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Add.png"))); // NOI18N
         jButton1.setText("Thêm");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 100, 90, 40));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 100, 90, 40));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 153));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Edit.png"))); // NOI18N
         jButton2.setText("Sửa");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 100, 90, 40));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 100, 90, 40));
 
         jButton3.setBackground(new java.awt.Color(255, 102, 102));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Delete.png"))); // NOI18N
         jButton3.setText("Xóa");
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 160, 90, 40));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 160, 90, 40));
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Document.png"))); // NOI18N
         jButton9.setText("Mới");
-        jPanel2.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 160, 90, 40));
+        jPanel2.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 160, 90, 40));
 
         jButton12.setBackground(new java.awt.Color(0, 153, 255));
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/next.png"))); // NOI18N
         jButton12.setBorder(null);
-        jPanel2.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 640, 60, 30));
+        jPanel2.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 610, 60, 30));
 
         jButton11.setBackground(new java.awt.Color(0, 153, 255));
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/last.png"))); // NOI18N
         jButton11.setBorder(null);
-        jPanel2.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 640, 60, 30));
+        jPanel2.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 610, 60, 30));
 
         jButton8.setBackground(new java.awt.Color(0, 153, 255));
         jButton8.setForeground(new java.awt.Color(0, 153, 255));
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/fist.png"))); // NOI18N
         jButton8.setBorder(null);
-        jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 640, 60, 30));
+        jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 610, 60, 30));
 
         jButton4.setBackground(new java.awt.Color(0, 153, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pre.png"))); // NOI18N
@@ -408,7 +408,7 @@ public class NhanVien extends javax.swing.JInternalFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 640, 60, 30));
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 610, 60, 30));
 
         getContentPane().add(jPanel2);
 
