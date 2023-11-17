@@ -4,18 +4,22 @@
  */
 package View;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author ASUS
  */
 public class TrangChu extends javax.swing.JFrame {
-
+    Dimension scSize = Toolkit.getDefaultToolkit().getScreenSize();
     /**
      * Creates new form TrangChu
      */
     public TrangChu() {
         initComponents();
         setLocationRelativeTo(null);
+        this.setSize(scSize);
     }
 
     /**
@@ -272,7 +276,7 @@ public class TrangChu extends javax.swing.JFrame {
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblDoiTra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuLayout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addComponent(lblHinh)
                 .addGap(22, 22, 22))
             .addGroup(pnlMenuLayout.createSequentialGroup()
@@ -327,9 +331,7 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(pnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1219, Short.MAX_VALUE))
+            .addComponent(pnlMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,11 +340,11 @@ public class TrangChu extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1420, 720));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 210, 720));
 
         jDesktopPane.setPreferredSize(new java.awt.Dimension(1180, 720));
-        jDesktopPane.setLayout(new javax.swing.OverlayLayout(jDesktopPane));
-        getContentPane().add(jDesktopPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 1205, 717));
+        jDesktopPane.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(jDesktopPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 60, 1100, 717));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

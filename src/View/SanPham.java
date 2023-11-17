@@ -165,7 +165,7 @@ public class SanPham extends javax.swing.JInternalFrame {
                         .addComponent(btnResetHang)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addContainerGap())
         );
         pnlPhanLoaiNhomHangLayout.setVerticalGroup(
             pnlPhanLoaiNhomHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,6 +203,8 @@ public class SanPham extends javax.swing.JInternalFrame {
         pnlPhanLoaiHang.setBackground(new java.awt.Color(0, 153, 255));
         pnlPhanLoaiHang.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        cboLoaiGiay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adidas", "Nike" }));
+
         javax.swing.GroupLayout pnlPhanLoaiHangLayout = new javax.swing.GroupLayout(pnlPhanLoaiHang);
         pnlPhanLoaiHang.setLayout(pnlPhanLoaiHangLayout);
         pnlPhanLoaiHangLayout.setHorizontalGroup(
@@ -231,27 +233,24 @@ public class SanPham extends javax.swing.JInternalFrame {
             .addGroup(pnlDanhMucSanPhamLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblPhanLoaiHang)
-                .addGap(41, 41, 41)
+                .addGap(26, 26, 26)
                 .addComponent(pnlPhanLoaiHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(190, 190, 190))
+                .addGap(143, 143, 143))
             .addGroup(pnlDanhMucSanPhamLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addContainerGap()
                 .addComponent(pnlPhanLoaiNhomHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         pnlDanhMucSanPhamLayout.setVerticalGroup(
             pnlDanhMucSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDanhMucSanPhamLayout.createSequentialGroup()
-                .addGroup(pnlDanhMucSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDanhMucSanPhamLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(lblPhanLoaiHang))
-                    .addGroup(pnlDanhMucSanPhamLayout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(pnlPhanLoaiHang, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(47, 47, 47)
+                .addGap(54, 54, 54)
+                .addGroup(pnlDanhMucSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnlPhanLoaiHang, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPhanLoaiHang))
+                .addGap(18, 18, 18)
                 .addComponent(pnlPhanLoaiNhomHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         tabs.addTab("Danh mục sản phẩm", pnlDanhMucSanPham);
@@ -390,7 +389,7 @@ public class SanPham extends javax.swing.JInternalFrame {
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnCapNhatSP, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
                             .addComponent(btnMoiSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblDonGia1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDonGia)
@@ -456,22 +455,23 @@ public class SanPham extends javax.swing.JInternalFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(93, 93, 93)
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(0, 20, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 1159, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel25)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 58, Short.MAX_VALUE))
+                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
+                        .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(74, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel25)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 1028, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -488,8 +488,9 @@ public class SanPham extends javax.swing.JInternalFrame {
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63))
         );
 
         tabs.addTab("Sản phẩm", jPanel3);
@@ -498,21 +499,21 @@ public class SanPham extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1261, Short.MAX_VALUE)
+            .addGap(0, 1095, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 1237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(18, Short.MAX_VALUE)))
+                    .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 1083, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 628, Short.MAX_VALUE)
+            .addGap(0, 587, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(tabs)
-                    .addContainerGap()))
+                    .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(9, Short.MAX_VALUE)))
         );
 
         getContentPane().add(jPanel1);
