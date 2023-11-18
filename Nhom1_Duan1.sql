@@ -92,7 +92,7 @@ CREATE TABLE SanPham
   MauSac NVARCHAR(225) NOT NULL,
   KichCo INT NOT NULL,
   ChatLieu NVARCHAR(225) NOT NULL,
-  MoTa NVARCHAR(225) NOT NULL,
+  MoTa NVARCHAR(225) NULL,
   MaNCC NVARCHAR(50) NOT NULL,
   AnhSP NVARCHAR(225) NOT NULL,
   PRIMARY KEY (MaSP),
@@ -239,7 +239,6 @@ VALUES
     @MauSac NVARCHAR(225),
     @KichCo INT,
     @ChatLieu NVARCHAR(225),
-    @MoTa NVARCHAR(225),
     @AnhSP NVARCHAR(225),
 	@MaNCC NVARCHAR(50),
     @DonGia DECIMAL(20, 0),
@@ -251,8 +250,8 @@ BEGIN
 	BEGIN TRY
 	BEGIN TRANSACTION;
 		--Insert vào bảng sản phẩm
-		INSERT INTO SanPham(MaSP,TenSP,SoLuongTonKho,MauSac,KichCo,ChatLieu,MoTa,AnhSP,MaNCC) 
-		VALUES(@MaSP,@TenSP,@SoLuongTonKho,@MauSac,@KichCo,@ChatLieu,@MoTa,@AnhSP,@MaNCC)
+		INSERT INTO SanPham(MaSP,TenSP,SoLuongTonKho,MauSac,KichCo,ChatLieu,AnhSP,MaNCC) 
+		VALUES(@MaSP,@TenSP,@SoLuongTonKho,@MauSac,@KichCo,@ChatLieu,@AnhSP,@MaNCC)
 		 -- Lấy MaSP vừa được thêm vào từ bảng SanPham
         DECLARE @InsertedMaSP NVARCHAR(50);
         SET @InsertedMaSP = (SELECT MaSP FROM SanPham WHERE MaSP = @MaSP);
@@ -274,14 +273,16 @@ BEGIN
 END
 
 EXEC InsertDataSanPham
-	@MaSP = N'SP005',
+	@MaSP = N'SP006',
     @TenSP = N'sY',
     @SoLuongTonKho = 100,
+	@DonGia = 5000000,
+	@ChatLieu = N'Vải',
     @MauSac = N'Đen',
     @KichCo = 42,
-    @ChatLieu = N'Da',
-    @MoTa = N'Mô tả sản phẩm',
+    
     @AnhSP = N'Đường dẫn ảnh sản phẩm',
 	@MaNCC = 'NCC002',
-    @DonGia = 5000000,
+    
 	@TenTH = N'Nike';
+

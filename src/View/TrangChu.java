@@ -351,7 +351,7 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void lblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMouseClicked
         // TODO add your handling code here:
-        SanPham sp = new SanPham();
+        SanPhamJrame sp = new SanPhamJrame();
         jDesktopPane.removeAll();
         jDesktopPane.add(sp).setVisible(true);
     }//GEN-LAST:event_lblSanPhamMouseClicked

@@ -16,6 +16,7 @@ public class SanPham {
     private String ChatLieu;
     private String MauSac;
     private int KichCo;
+    private String MaNCC;
     private String ThuongHieu;
     private String HinhSP;
     private String GhiChu;
@@ -90,6 +91,22 @@ public class SanPham {
 
     public void setHinhSP(String HinhSP) {
         this.HinhSP = HinhSP;
+    }
+
+    public String getMaNCC() {
+        return MaNCC;
+    }
+
+    public void setMaNCC(String MaNCC) {
+        this.MaNCC = MaNCC;
+    }
+
+    public String getGhiChu() {
+        return GhiChu;
+    }
+
+    public void setGhiChu(String GhiChu) {
+        this.GhiChu = GhiChu;
     }
     
     
