@@ -674,7 +674,6 @@ public class SanPhamJrame extends javax.swing.JInternalFrame {
             
         } catch (Exception e) {
 //            JOptionPane.showMessageDialog(this, "Lỗi truy vấn dữ liệu");
-                System.out.println(e);
         }
     }
     
