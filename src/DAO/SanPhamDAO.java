@@ -5,6 +5,9 @@
 package DAO;
 
 import entity.SanPham;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import utils.XJdbc;
 
@@ -15,7 +18,7 @@ import utils.XJdbc;
 public class SanPhamDAO extends ShopGiayDAO<SanPham, Integer>{
     
     public void insert(SanPham model){
-        String sql = "EXEC InsertDataSanPham MaSP=?, TenSP=?, SoLuongTonKho=?, DonGia=?,ChatLieu=?, MauSac=?, KichCo=?, MaNCC=?,TenTH=?, AnhSP=? ";
+        String sql = "EXEC InsertDataSanPham @MaSP=?, @TenSP=?, @SoLuongTonKho=?, @DonGia=?,@ChatLieu=?, @MauSac=?, @KichCo=?, @MaNCC=?,@TenTH=?, @AnhSP=? ";
         XJdbc.update(sql, 
                 model.getMaSP(),
                 model.getTenSP(),
@@ -32,10 +35,10 @@ public class SanPhamDAO extends ShopGiayDAO<SanPham, Integer>{
 
     @Override
     public void update(SanPham model) {
-        String sql = "UPDATE SANPHAM INNER JOIN GIABAN ON SANPHAM.MASP=GIABAN.MASP INNER JOIN THUONGHIEU INNER JOIN SANPHAM.MASP=THUONGHIEU.MASP"
-                + "SET TenSP=?, SoLuongTonKho=?, DonGia=?,ChatLieu=?, MauSac=?, KichCo=?, MaNCC=?,TenTH=?, AnhSP=? "
-                + "WHERE MASP=?";
+        String sql = "EXEC Update_SanPham "
+                + "@MaSP=?, @TenSP=?, @SoLuongTonKho=?, @DonGia=?, @ChatLieu=?, @MauSac=?, @KichCo=?, @MaNCC=?, @TenTH=?, @AnhSP=?";
         XJdbc.update(sql, 
+                model.getMaSP(),
                 model.getTenSP(),
                 model.getSoLuongTonKho(),
                 model.getDonGia(),
@@ -44,36 +47,77 @@ public class SanPhamDAO extends ShopGiayDAO<SanPham, Integer>{
                 model.getKichCo(),
                 model.getMaNCC(),
                 model.getThuongHieu(),
-                model.getHinhSP(),
-                model.getMaSP()
+                model.getHinhSP()
                 );
     }
 
     @Override
     public void delete(Integer id) {
-        String sql = "DELETE TenSP, SoLuongTonKho, DonGia,ChatLieu, MauSac, KichCo, MaNCC,TenTH, AnhSP"
-                + "FROM SANPHAM INNER JOIN GIABAN ON SANPHAM.MASP=GIABAN.MASP INNER JOIN THUONGHIEU INNER JOIN SANPHAM.MASP=THUONGHIEU.MASP"
-                + "WHERE SANPHAM.MASP=?";
+        String sql = "DELETE FROM SANPHAM WHERE MaSP=?;"
+                + "DELETE FROM GIABAN WHERE MASP=?;"
+                + "DELETE FROM THUONGHIEU WHERE MASP=?";
+    }
+    
+
+
+//    @Override
+//    public List<SanPham> selectAll() {
+//
+//    }
+
+    @Override
+    public SanPham selectById(Integer id) {
+        String sql="SELECT * FROM SANPHAM WHERE MaSP=?";
+        List<SanPham> list = this.selectBySql(sql, id);
+        return list.size() > 0 ? list.get(0) : null;
+    }
+
+    
+    public List<SanPham> selectBySanPham(String MaSP){
+        String sql="SELECT SANPHAM.MaSP, TenSP, SoLuongTonKho,DonGia,ChatLieu, MauSac, KichCo, MaNCC,TenTH, AnhSP \n" +
+"                FROM SanPham INNER JOIN GIABAN ON SanPham.MaSP=GiaBan.MaSP\n" +
+"                INNER JOIN ThuongHieu ON SanPham.MaSP=ThuongHieu.MaSP WHERE SANPHAM.MaSP=?";
+        return this.selectBySql(sql, MaSP);
     }
 
     @Override
     public List<SanPham> selectAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "SELECT * FROM SanPham_View";
+        return this.selectBySql(sql);
     }
 
+    
     @Override
-    public SanPham selectById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public List<SanPham> selectBySql(String sql, Object... args) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    public List<SanPham> selectBySanPham(String masp){
-        String sql="SELECT SANPHAM.MaSP, TenSP, SoLuongTonKho,DonGia,ChatLieu, MauSac, KichCo, MaNCC,TenTH, AnhSP \n" +
-"                FROM SanPham INNER JOIN GIABAN ON SanPham.MaSP=GiaBan.MaSP\n" +
-"                INNER JOIN ThuongHieu ON SanPham.MaSP=ThuongHieu.MaSP WHERE SANPHAM.MaSP=?";
-        return this.selectBySql(sql, masp);
+    protected List<SanPham> selectBySql(String sql, Object... args) {
+        List<SanPham> list = new ArrayList<>();
+        try {
+            ResultSet rs = null;
+            try {
+                rs = XJdbc.query(sql, args);
+                while(rs.next()){
+                    SanPham entity=new SanPham();
+                    entity.setMaSP(rs.getString("MaSP"));
+                    entity.setTenSP(rs.getString("TenSP"));
+                    entity.setSoLuongTonKho(rs.getInt("SoLuongTonKho"));
+                    entity.setDonGia(rs.getDouble("DonGia"));
+                    entity.setChatLieu(rs.getString("ChatLieu"));
+                    entity.setMauSac(rs.getString("MauSac"));
+                    entity.setKichCo(rs.getInt("KichCo"));
+                    entity.setMaNCC(rs.getString("MaNCC"));
+                    entity.setThuongHieu(rs.getString("TenTH"));
+                    entity.setHinhSP(rs.getString("AnhSP"));
+                    list.add(entity);
+                }
+            } 
+            finally{
+                rs.getStatement().getConnection().close();
+            }
+        } 
+        catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
+        }
+        return list;
+    
     }
 }

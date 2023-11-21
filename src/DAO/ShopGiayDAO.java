@@ -10,11 +10,11 @@ import java.util.List;
  *
  * @author T490
  */
-public abstract class ShopGiayDAO<EntityType, KeyType> {
-    public abstract void insert(EntityType entity);
-    public abstract void update(EntityType entity);
-    public abstract void delete(KeyType id);
-    public abstract List<EntityType> selectAll();
-    public abstract EntityType selectById(KeyType id);
-    public abstract List<EntityType> selectBySql(String sql, Object...args);
+abstract public class ShopGiayDAO<EntityType, KeyType> {
+    abstract public void insert(EntityType entity);
+    abstract public void update(EntityType entity);
+    abstract public void delete(KeyType id);
+    abstract public List<EntityType> selectAll();
+    abstract public EntityType selectById(KeyType id);
+    abstract protected List<EntityType> selectBySql(String sql, Object...args);
 }

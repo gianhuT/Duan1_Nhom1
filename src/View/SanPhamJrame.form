@@ -352,9 +352,12 @@
                     <Component class="javax.swing.JComboBox" name="cboLoaiGiay">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="2">
+                          <StringArray count="5">
                             <StringItem index="0" value="Adidas"/>
                             <StringItem index="1" value="Nike"/>
+                            <StringItem index="2" value="Puma"/>
+                            <StringItem index="3" value="Converse"/>
+                            <StringItem index="4" value=" "/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -459,18 +462,12 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblHinhSP" min="-2" pref="133" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="lblHinhSP" alignment="0" pref="155" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblHinhSP" min="-2" pref="169" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="lblHinhSP" alignment="0" pref="190" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -479,6 +476,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="jLabel27"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblHinhSPMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -670,7 +670,7 @@
                                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lblDonGia4" min="-2" pref="77" max="-2" attributes="0"/>
+                                      <Component id="txtTenTH" min="-2" pref="77" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -743,7 +743,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lblDonGia4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtTenTH" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtThuongHieuSP" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace pref="12" max="32767" attributes="0"/>
@@ -798,6 +798,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="M&#x1edb;i"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMoiSPActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblMaSP">
                       <Properties>
@@ -869,7 +872,7 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtKichCo">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblDonGia4">
+                    <Component class="javax.swing.JLabel" name="txtTenTH">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="f2" green="f2" red="f2" type="rgb"/>
@@ -889,6 +892,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaHang1ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel2">
                       <Properties>

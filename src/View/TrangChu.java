@@ -12,14 +12,14 @@ import java.awt.Toolkit;
  * @author ASUS
  */
 public class TrangChu extends javax.swing.JFrame {
-    Dimension scSize = Toolkit.getDefaultToolkit().getScreenSize();
+    
     /**
      * Creates new form TrangChu
      */
     public TrangChu() {
         initComponents();
         setLocationRelativeTo(null);
-        this.setSize(scSize);
+        
     }
 
     /**
