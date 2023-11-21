@@ -24,6 +24,7 @@ public class SanPhamJrame extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
+        init();
     }
 
     /**
@@ -314,6 +315,11 @@ public class SanPhamJrame extends javax.swing.JInternalFrame {
                 "Mã SP", "Tên SP", "Số lượng tồn kho", "Đơn giá", "Chất liệu", "Màu sắc", "Kích cỡ", "Mã NCC", "Thương hiệu", "Ảnh"
             }
         ));
+        tblDanhSachSP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDanhSachSPMouseClicked(evt);
+            }
+        });
         jScrollPane10.setViewportView(tblDanhSachSP);
 
         jPanel12.setBackground(new java.awt.Color(51, 153, 255));
@@ -558,6 +564,11 @@ public class SanPhamJrame extends javax.swing.JInternalFrame {
         insert();
     }//GEN-LAST:event_btnThemSPActionPerformed
 
+    private void tblDanhSachSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhSachSPMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_tblDanhSachSPMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhatHang;
@@ -619,11 +630,14 @@ public class SanPhamJrame extends javax.swing.JInternalFrame {
     SanPhamDAO dao = new SanPhamDAO();
     int row = -1;
     
+    void init(){
+        this.fillToTable();
+    }
     void insert() {
         SanPham model = getForm();
-        if(!Validate()){
-            
-        }else{
+//        if(!Validate()){
+//            
+//        }else{
             try {
                 dao.insert(model);
                 this.fillToTable();
@@ -632,10 +646,10 @@ public class SanPhamJrame extends javax.swing.JInternalFrame {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Thêm mới thất bại !");
             }
-        }
+        //}
     }
 
-    private void fillToTable() {
+    void fillToTable() {
         DefaultTableModel model = (DefaultTableModel) tblDanhSachSP.getModel();
         model.setRowCount(0);
         try {
@@ -659,16 +673,26 @@ public class SanPhamJrame extends javax.swing.JInternalFrame {
             
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Lỗi truy vấn dữ liệu");
+//            JOptionPane.showMessageDialog(this, "Lỗi truy vấn dữ liệu");
+                System.out.println(e);
         }
     }
     
     void clearForm(){
         SanPham sp = new SanPham();
-        this.setForm(sp);
+        sp.setMaSP(txtMaSP.getText());
+        sp.setTenSP(txtTenSP.getText());
+        sp.setSoLuongTonKho(Integer.valueOf(txtSoLuongTonKho.getText()));
+        sp.setDonGia(Double.valueOf(txtDonGia.getText()));
+        sp.setChatLieu(txtChatLieu.getText());
+        sp.setMauSac(txtMauSac.getText());
+        sp.setKichCo(Integer.valueOf(txtKichCo.getText()));
+        sp.setMaNCC(txtMaNCC.getText());
+        sp.setThuongHieu(txtThuongHieu.getText());
+        
     }
 
-    private void setForm(SanPham sp) {
+    void setForm(SanPham sp) {
         txtMaSP.setText(sp.getMaSP());
         txtTenSP.setText(sp.getTenSP());
         txtSoLuongTonKho.setText(String.valueOf(sp.getSoLuongTonKho()));
@@ -680,11 +704,24 @@ public class SanPhamJrame extends javax.swing.JInternalFrame {
         txtThuongHieuSP.setText(sp.getThuongHieu());
     }
 
-    private SanPham getForm() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    SanPham getForm() {
+        SanPham sp = new SanPham();
+        sp.setMaSP(txtMaSP.getText());
+        sp.setTenSP(txtTenSP.getText());
+        sp.setSoLuongTonKho(Integer.valueOf(txtSoLuongTonKho.getText()));
+        sp.setDonGia(Double.valueOf(txtDonGia.getText()));
+        sp.setChatLieu(txtChatLieu.getText());
+        sp.setMauSac(txtMauSac.getText());
+        sp.setKichCo(Integer.valueOf(txtKichCo.getText()));
+        sp.setMaNCC(txtMaNCC.getText());
+        sp.setThuongHieu(txtThuongHieu.getText());
+        return sp;
+        
     }
 
-    private boolean Validate() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+//    boolean Validate() {
+//        
+//    }
+
+    
 }

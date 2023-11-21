@@ -15,7 +15,7 @@ import utils.XJdbc;
 public class SanPhamDAO extends ShopGiayDAO<SanPham, Integer>{
     
     public void insert(SanPham model){
-        String sql = "EXEC InsertDataSanPham MaSP=?, TenSP=?, SoLuongTonKho=?, DonGia=?,ChatLieu=?, MauSac=?, KichCo=?, MaNCC=?,ThuongHieu=?, AnhSP=? ";
+        String sql = "EXEC InsertDataSanPham MaSP=?, TenSP=?, SoLuongTonKho=?, DonGia=?,ChatLieu=?, MauSac=?, KichCo=?, MaNCC=?,TenTH=?, AnhSP=? ";
         XJdbc.update(sql, 
                 model.getMaSP(),
                 model.getTenSP(),
@@ -31,13 +31,29 @@ public class SanPhamDAO extends ShopGiayDAO<SanPham, Integer>{
     } 
 
     @Override
-    public void update(SanPham entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void update(SanPham model) {
+        String sql = "UPDATE SANPHAM INNER JOIN GIABAN ON SANPHAM.MASP=GIABAN.MASP INNER JOIN THUONGHIEU INNER JOIN SANPHAM.MASP=THUONGHIEU.MASP"
+                + "SET TenSP=?, SoLuongTonKho=?, DonGia=?,ChatLieu=?, MauSac=?, KichCo=?, MaNCC=?,TenTH=?, AnhSP=? "
+                + "WHERE MASP=?";
+        XJdbc.update(sql, 
+                model.getTenSP(),
+                model.getSoLuongTonKho(),
+                model.getDonGia(),
+                model.getChatLieu(),
+                model.getMauSac(),
+                model.getKichCo(),
+                model.getMaNCC(),
+                model.getThuongHieu(),
+                model.getHinhSP(),
+                model.getMaSP()
+                );
     }
 
     @Override
     public void delete(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "DELETE TenSP, SoLuongTonKho, DonGia,ChatLieu, MauSac, KichCo, MaNCC,TenTH, AnhSP"
+                + "FROM SANPHAM INNER JOIN GIABAN ON SANPHAM.MASP=GIABAN.MASP INNER JOIN THUONGHIEU INNER JOIN SANPHAM.MASP=THUONGHIEU.MASP"
+                + "WHERE SANPHAM.MASP=?";
     }
 
     @Override
@@ -55,9 +71,9 @@ public class SanPhamDAO extends ShopGiayDAO<SanPham, Integer>{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     public List<SanPham> selectBySanPham(String masp){
-        String sql="SELECT MaSP, TenSP, SoLuongTonKho,DonGia,ChatLieu, MauSac, KichCo, MaNCC,ThuongHieu, AnhSP "
-                + "FROM SanPham INNER JOIN GIABAN ON SanPham.MaSP=GiaBan.MaSP"
-                + "INNER JOIN ThuongHieu ON SanPham.MaSP=ThuongHieu.MaSP WHERE MaSP=?";
+        String sql="SELECT SANPHAM.MaSP, TenSP, SoLuongTonKho,DonGia,ChatLieu, MauSac, KichCo, MaNCC,TenTH, AnhSP \n" +
+"                FROM SanPham INNER JOIN GIABAN ON SanPham.MaSP=GiaBan.MaSP\n" +
+"                INNER JOIN ThuongHieu ON SanPham.MaSP=ThuongHieu.MaSP WHERE SANPHAM.MaSP=?";
         return this.selectBySql(sql, masp);
     }
 }
