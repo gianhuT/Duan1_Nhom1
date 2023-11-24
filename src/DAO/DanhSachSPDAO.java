@@ -4,7 +4,9 @@
  */
 package DAO;
 
-import entity.SanPham;
+import entity.DanhSachSanPham;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import utils.XJdbc;
 
@@ -12,66 +14,73 @@ import utils.XJdbc;
  *
  * @author T490
  */
-public class DanhSachSPDAO extends ShopGiayDAO<SanPham, Integer>{
-    public void insert(SanPham model){
-        String sql = "EXEC InsertDataSanPham MaSP=?, TenSP=?, SoLuongTonKho=?, DonGia=?,ChatLieu=?, MauSac=?, KichCo=?, MaNCC=?,TenTH=?, AnhSP=? ";
-        XJdbc.update(sql, 
-                model.getMaSP(),
-                model.getTenSP(),
-                model.getSoLuongTonKho(),
-                model.getDonGia(),
-                model.getChatLieu(),
-                model.getMauSac(),
-                model.getKichCo(),
-                model.getMaNCC(),
-                model.getThuongHieu(),
-                model.getHinhSP()
-                );
-    } 
+public class DanhSachSPDAO extends ShopGiayDAO<DanhSachSanPham, String>{
 
     @Override
-    public void update(SanPham model) {
-        String sql = "UPDATE SANPHAM INNER JOIN GIABAN ON SANPHAM.MASP=GIABAN.MASP INNER JOIN THUONGHIEU INNER JOIN SANPHAM.MASP=THUONGHIEU.MASP"
-                + "SET TenSP=?, SoLuongTonKho=?, DonGia=?,ChatLieu=?, MauSac=?, KichCo=?, MaNCC=?,TenTH=?, AnhSP=? "
-                + "WHERE MASP=?";
+    public void insert(DanhSachSanPham model) {
+        String sql = "INSERT INTO THUONGHIEU(MaTH, TenTH, MoTa) VALUES (?,?,?)";
         XJdbc.update(sql, 
-                model.getTenSP(),
-                model.getSoLuongTonKho(),
-                model.getDonGia(),
-                model.getChatLieu(),
-                model.getMauSac(),
-                model.getKichCo(),
-                model.getMaNCC(),
-                model.getThuongHieu(),
-                model.getHinhSP(),
-                model.getMaSP()
+                model.getMaGiay(),
+                model.getTenTH(),
+                model.getGhiChu()
                 );
     }
 
     @Override
-    public void delete(Integer id) {
-        String sql = "DELETE TenSP, SoLuongTonKho, DonGia,ChatLieu, MauSac, KichCo, MaNCC,TenTH, AnhSP"
-                + "FROM SANPHAM INNER JOIN GIABAN ON SANPHAM.MASP=GIABAN.MASP INNER JOIN THUONGHIEU INNER JOIN SANPHAM.MASP=THUONGHIEU.MASP"
-                + "WHERE SANPHAM.MASP=?";
+    public void update(DanhSachSanPham model) {
+        String sql = "UPDATE THUONGHIEU SET TenTH=?, MoTa=? WHERE MaSP=?";
+        XJdbc.update(sql, 
+                model.getTenTH(),
+                model.getGhiChu(),
+                model.getMaGiay()
+                );
     }
 
     @Override
-    public List<SanPham> selectAll() {
+    public void delete(String id) {
+        String sql = "DELETE THUONGHIEU WHERE MaSP=?";
+        XJdbc.update(sql, id);
+    }
+
+    @Override
+    public List<DanhSachSanPham> selectAll() {
+        String sql = "SELECT MaSP, TenTH, MoTa FROM THUONGHIEU";
+        return this.selectBySql(sql);
+    }
+
+    @Override
+    public DanhSachSanPham selectById(String id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public SanPham selectById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    protected List<DanhSachSanPham> selectBySql(String sql, Object... args) {
+        List<DanhSachSanPham> list = new ArrayList<>();
+        try {
+            ResultSet rs = null;
+            try {
+                rs = XJdbc.query(sql, args);
+                while(rs.next()){
+                    DanhSachSanPham entity = new DanhSachSanPham();
+                    entity.setMaGiay(rs.getString("MaSP"));
+                    entity.setTenTH(rs.getString("TenTH"));
+                    entity.setGhiChu(rs.getString("MoTa"));
+                    list.add(entity);
+                }
+            }finally{
+                rs.getStatement().getConnection().close();
+            } 
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return list;
     }
-
-    @Override
-    public List<SanPham> selectBySql(String sql, Object... args) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+    public List<DanhSachSanPham> selectByThuongHieu(String MaTH){
+        String sql = "SELECT MaTH, TenTH, MoTa FROM THUONGHIEU WHERE MaTh = ?";
+        return this.selectBySql(sql, MaTH);
     }
-    public List<SanPham> selectByDSSP(String masp){
-        String sql="SELECT SANPHAM.MaSP, TenSP,TenTH, MoTa \n" +
-"                FROM SanPham INNER JOIN ThuongHieu ON SanPham.MaSP=ThuongHieu.MaSP WHERE SANPHAM.MaSP=?";
-        return this.selectBySql(sql, masp);
-    }
+    
 }

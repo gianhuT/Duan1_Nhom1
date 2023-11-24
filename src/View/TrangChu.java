@@ -4,22 +4,25 @@
  */
 package View;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  *
  * @author ASUS
  */
 public class TrangChu extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form TrangChu
      */
     public TrangChu() {
         initComponents();
         setLocationRelativeTo(null);
-        
+        init();
     }
 
     /**
@@ -47,9 +50,9 @@ public class TrangChu extends javax.swing.JFrame {
         btnBaoDong = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         pnlMenu = new javax.swing.JPanel();
-        lblTenNhanVien = new javax.swing.JLabel();
-        lblVaiTro = new javax.swing.JLabel();
-        lblThoiGian = new javax.swing.JLabel();
+        TenNhanVien = new javax.swing.JLabel();
+        VaiTro = new javax.swing.JLabel();
+        ThoiGian = new javax.swing.JLabel();
         lblHinh = new javax.swing.JLabel();
         lblSanPham = new javax.swing.JLabel();
         lblKhuyenMai = new javax.swing.JLabel();
@@ -59,6 +62,9 @@ public class TrangChu extends javax.swing.JFrame {
         lblBanHang = new javax.swing.JLabel();
         lblDonHang = new javax.swing.JLabel();
         lblDoiTra = new javax.swing.JLabel();
+        lblTenNhanVien = new javax.swing.JLabel();
+        lblVaiTro = new javax.swing.JLabel();
+        lblThoiGian = new javax.swing.JLabel();
         jDesktopPane = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -175,14 +181,14 @@ public class TrangChu extends javax.swing.JFrame {
         pnlMenu.setBackground(new java.awt.Color(0, 153, 255));
         pnlMenu.setForeground(new java.awt.Color(242, 242, 242));
 
-        lblTenNhanVien.setForeground(new java.awt.Color(255, 255, 255));
-        lblTenNhanVien.setText("Nhân viên:");
+        TenNhanVien.setForeground(new java.awt.Color(255, 255, 255));
+        TenNhanVien.setText("Nhân viên:");
 
-        lblVaiTro.setForeground(new java.awt.Color(255, 255, 255));
-        lblVaiTro.setText("Vai trò:");
+        VaiTro.setForeground(new java.awt.Color(255, 255, 255));
+        VaiTro.setText("Vai trò:");
 
-        lblThoiGian.setForeground(new java.awt.Color(255, 255, 255));
-        lblThoiGian.setText("Thời gian: ");
+        ThoiGian.setForeground(new java.awt.Color(255, 255, 255));
+        ThoiGian.setText("Thời gian: ");
 
         lblHinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logoShopGiay1.jpg"))); // NOI18N
 
@@ -191,6 +197,7 @@ public class TrangChu extends javax.swing.JFrame {
         lblSanPham.setForeground(new java.awt.Color(242, 242, 242));
         lblSanPham.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSanPham.setText("Sản phẩm");
+        lblSanPham.setOpaque(true);
         lblSanPham.setPreferredSize(new java.awt.Dimension(35, 35));
         lblSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -202,6 +209,7 @@ public class TrangChu extends javax.swing.JFrame {
         lblKhuyenMai.setForeground(new java.awt.Color(242, 242, 242));
         lblKhuyenMai.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblKhuyenMai.setText("Khuyến mãi");
+        lblKhuyenMai.setOpaque(true);
         lblKhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblKhuyenMaiMouseClicked(evt);
@@ -212,6 +220,7 @@ public class TrangChu extends javax.swing.JFrame {
         lblKhachHang.setForeground(new java.awt.Color(242, 242, 242));
         lblKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblKhachHang.setText("Khách hàng");
+        lblKhachHang.setOpaque(true);
         lblKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblKhachHangMouseClicked(evt);
@@ -222,6 +231,7 @@ public class TrangChu extends javax.swing.JFrame {
         lblThongKe.setForeground(new java.awt.Color(255, 255, 255));
         lblThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblThongKe.setText("Thống kê");
+        lblThongKe.setOpaque(true);
         lblThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblThongKeMouseClicked(evt);
@@ -232,6 +242,7 @@ public class TrangChu extends javax.swing.JFrame {
         lblNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         lblNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNhanVien.setText("Nhân viên");
+        lblNhanVien.setOpaque(true);
         lblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblNhanVienMouseClicked(evt);
@@ -242,6 +253,7 @@ public class TrangChu extends javax.swing.JFrame {
         lblBanHang.setForeground(new java.awt.Color(255, 255, 255));
         lblBanHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBanHang.setText("Bán hàng");
+        lblBanHang.setOpaque(true);
         lblBanHang.setPreferredSize(new java.awt.Dimension(35, 35));
         lblBanHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -253,6 +265,8 @@ public class TrangChu extends javax.swing.JFrame {
         lblDonHang.setForeground(new java.awt.Color(255, 255, 255));
         lblDonHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDonHang.setText("Đơn hàng");
+        lblDonHang.setName(""); // NOI18N
+        lblDonHang.setOpaque(true);
         lblDonHang.setPreferredSize(new java.awt.Dimension(35, 35));
         lblDonHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -264,17 +278,26 @@ public class TrangChu extends javax.swing.JFrame {
         lblDoiTra.setForeground(new java.awt.Color(255, 255, 255));
         lblDoiTra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDoiTra.setText("Đổi - Trả");
+        lblDoiTra.setOpaque(true);
         lblDoiTra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblDoiTraMouseClicked(evt);
             }
         });
 
+        lblTenNhanVien.setForeground(new java.awt.Color(242, 242, 242));
+        lblTenNhanVien.setText("jLabel1");
+
+        lblVaiTro.setForeground(new java.awt.Color(242, 242, 242));
+        lblVaiTro.setText("jLabel2");
+
+        lblThoiGian.setForeground(new java.awt.Color(242, 242, 242));
+        lblThoiGian.setText("jLabel3");
+
         javax.swing.GroupLayout pnlMenuLayout = new javax.swing.GroupLayout(pnlMenu);
         pnlMenu.setLayout(pnlMenuLayout);
         pnlMenuLayout.setHorizontalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblDoiTra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuLayout.createSequentialGroup()
                 .addContainerGap(30, Short.MAX_VALUE)
                 .addComponent(lblHinh)
@@ -289,11 +312,21 @@ public class TrangChu extends javax.swing.JFrame {
                     .addComponent(lblKhuyenMai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblNhanVien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblSanPham, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblDoiTra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlMenuLayout.createSequentialGroup()
                         .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTenNhanVien)
-                            .addComponent(lblThoiGian)
-                            .addComponent(lblVaiTro))
+                            .addGroup(pnlMenuLayout.createSequentialGroup()
+                                .addComponent(ThoiGian)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblThoiGian))
+                            .addGroup(pnlMenuLayout.createSequentialGroup()
+                                .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TenNhanVien)
+                                    .addComponent(VaiTro))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblVaiTro)
+                                    .addComponent(lblTenNhanVien))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -303,11 +336,17 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTenNhanVien)
+                .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TenNhanVien)
+                    .addComponent(lblTenNhanVien))
                 .addGap(30, 30, 30)
-                .addComponent(lblVaiTro)
+                .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(VaiTro)
+                    .addComponent(lblVaiTro))
                 .addGap(27, 27, 27)
-                .addComponent(lblThoiGian, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ThoiGian, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblThoiGian))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(lblBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -473,6 +512,9 @@ public class TrangChu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel TenNhanVien;
+    private javax.swing.JLabel ThoiGian;
+    private javax.swing.JLabel VaiTro;
     private javax.swing.JButton btnBaoDong;
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDoiMatKhau;
@@ -503,4 +545,94 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel lblVaiTro;
     private javax.swing.JPanel pnlMenu;
     // End of variables declaration//GEN-END:variables
+
+    private void init() {
+        lblBanHang.setBackground(pnlMenu.getBackground());
+        lblBanHang.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                lblBanHang.setBackground(Color.RED); // Đổi màu nền thành màu đỏ
+            }
+
+            public void mouseExited(MouseEvent e) {
+                lblBanHang.setBackground(pnlMenu.getBackground()); // Đổi màu nền về màu của JPanel
+            }
+        });
+        //set Đơn hàng
+        lblDonHang.setBackground(pnlMenu.getBackground());
+        lblDonHang.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                lblDonHang.setBackground(Color.RED); // Đổi màu nền thành màu đỏ
+            }
+
+            public void mouseExited(MouseEvent e) {
+                lblDonHang.setBackground(pnlMenu.getBackground()); // Đổi màu nền về màu của JPanel
+            }
+        });
+        // Set đổi trả
+        lblDoiTra.setBackground(pnlMenu.getBackground());
+        lblDoiTra.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                lblDoiTra.setBackground(Color.RED); // Đổi màu nền thành màu đỏ
+            }
+
+            public void mouseExited(MouseEvent e) {
+                lblDoiTra.setBackground(pnlMenu.getBackground()); // Đổi màu nền về màu của JPanel
+            }
+        });
+        // set sản phẩm
+        lblSanPham.setBackground(pnlMenu.getBackground());
+        lblSanPham.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                lblSanPham.setBackground(Color.RED); // Đổi màu nền thành màu đỏ
+            }
+
+            public void mouseExited(MouseEvent e) {
+                lblSanPham.setBackground(pnlMenu.getBackground()); // Đổi màu nền về màu của JPanel
+            }
+        });
+        // set khuyến mãi
+        lblKhuyenMai.setBackground(pnlMenu.getBackground());
+        lblKhuyenMai.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                lblKhuyenMai.setBackground(Color.RED); // Đổi màu nền thành màu đỏ
+            }
+
+            public void mouseExited(MouseEvent e) {
+                lblKhuyenMai.setBackground(pnlMenu.getBackground()); // Đổi màu nền về màu của JPanel
+            }
+        });
+        // Set khách hàng
+        lblKhachHang.setBackground(pnlMenu.getBackground());
+        lblKhachHang.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                lblKhachHang.setBackground(Color.RED); // Đổi màu nền thành màu đỏ
+            }
+
+            public void mouseExited(MouseEvent e) {
+                lblKhachHang.setBackground(pnlMenu.getBackground()); // Đổi màu nền về màu của JPanel
+            }
+        });
+        // Set THống kê
+        lblThongKe.setBackground(pnlMenu.getBackground());
+        lblThongKe.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                lblThongKe.setBackground(Color.RED); // Đổi màu nền thành màu đỏ
+            }
+
+            public void mouseExited(MouseEvent e) {
+                lblThongKe.setBackground(pnlMenu.getBackground()); // Đổi màu nền về màu của JPanel
+            }
+        });
+        // set nhân viên
+        lblNhanVien.setBackground(pnlMenu.getBackground());
+        lblNhanVien.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                lblNhanVien.setBackground(Color.RED); // Đổi màu nền thành màu đỏ
+            }
+
+            public void mouseExited(MouseEvent e) {
+                lblNhanVien.setBackground(pnlMenu.getBackground()); // Đổi màu nền về màu của JPanel
+            }
+        });
+    }
 }

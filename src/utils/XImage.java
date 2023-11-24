@@ -22,7 +22,7 @@ public class XImage {
      * @param src là đối tượng file ảnh
      */   
     public static void save(File src){
-        File dst = new File("logos", src.getName());
+        File dst = new File("Anh", src.getName());
         if(!dst.getParentFile().exists()){
             dst.getParentFile().mkdirs();
         }
@@ -41,7 +41,7 @@ public class XImage {
      * @return ảnh đọc được
      */   
     public static ImageIcon read(String fileName){
-        File path = new File("logos", fileName);
+        File path = new File("Anh", fileName);
         return new ImageIcon(path.getAbsolutePath());
     }
 }

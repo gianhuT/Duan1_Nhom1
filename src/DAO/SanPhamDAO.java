@@ -15,7 +15,7 @@ import utils.XJdbc;
  *
  * @author T490
  */
-public class SanPhamDAO extends ShopGiayDAO<SanPham, Integer>{
+public class SanPhamDAO extends ShopGiayDAO<SanPham, String>{
     
     public void insert(SanPham model){
         String sql = "EXEC InsertDataSanPham @MaSP=?, @TenSP=?, @SoLuongTonKho=?, @DonGia=?,@ChatLieu=?, @MauSac=?, @KichCo=?, @MaNCC=?,@TenTH=?, @AnhSP=? ";
@@ -52,10 +52,9 @@ public class SanPhamDAO extends ShopGiayDAO<SanPham, Integer>{
     }
 
     @Override
-    public void delete(Integer id) {
-        String sql = "DELETE FROM SANPHAM WHERE MaSP=?;"
-                + "DELETE FROM GIABAN WHERE MASP=?;"
-                + "DELETE FROM THUONGHIEU WHERE MASP=?";
+    public void delete(String id) {
+        String sql = "DELETE FROM SANPHAM WHERE MaSP = ?";
+        XJdbc.update(sql, id);
     }
     
 
@@ -66,7 +65,7 @@ public class SanPhamDAO extends ShopGiayDAO<SanPham, Integer>{
 //    }
 
     @Override
-    public SanPham selectById(Integer id) {
+    public SanPham selectById(String id) {
         String sql="SELECT * FROM SANPHAM WHERE MaSP=?";
         List<SanPham> list = this.selectBySql(sql, id);
         return list.size() > 0 ? list.get(0) : null;
@@ -120,4 +119,6 @@ public class SanPhamDAO extends ShopGiayDAO<SanPham, Integer>{
         return list;
     
     }
+
+    
 }
