@@ -45,6 +45,7 @@ public class TrangChu extends javax.swing.JFrame {
         btnGioiThieuSanPham = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         btnBaoDong = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         pnlMenu = new javax.swing.JPanel();
         lblTenNhanVien = new javax.swing.JLabel();
@@ -168,7 +169,18 @@ public class TrangChu extends javax.swing.JFrame {
         btnBaoDong.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnBaoDong);
 
-        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1420, -1));
+        jButton1.setText("ThongTinCaNhan");
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton1);
+
+        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1500, -1));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -344,7 +356,7 @@ public class TrangChu extends javax.swing.JFrame {
 
         jDesktopPane.setPreferredSize(new java.awt.Dimension(1180, 720));
         jDesktopPane.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(jDesktopPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 60, 1100, 717));
+        getContentPane().add(jDesktopPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 60, 1280, 717));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -375,7 +387,7 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_lblNhanVienMouseClicked
 
     private void lblThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseClicked
-        ThongKe tk = new ThongKe();
+        ThongKeJframe tk = new ThongKeJframe();
         jDesktopPane.removeAll();
         jDesktopPane.add(tk).setVisible(true);
     }//GEN-LAST:event_lblThongKeMouseClicked
@@ -432,10 +444,16 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void btnThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseClicked
         // TODO add your handling code here:
-        ThongKe tk = new ThongKe();
+        ThongKeJframe tk = new ThongKeJframe();
         jDesktopPane.removeAll();
         jDesktopPane.add(tk).setVisible(true);
     }//GEN-LAST:event_btnThongKeMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ThongTinCaNhanJframe Tt = new ThongTinCaNhanJframe();
+        jDesktopPane.removeAll();
+        jDesktopPane.add(Tt).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -483,6 +501,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnKhachHang;
     private javax.swing.JButton btnKhuyenMai;
     private javax.swing.JButton btnThongKe;
+    private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar.Separator jSeparator1;

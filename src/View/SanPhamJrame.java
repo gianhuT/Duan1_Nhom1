@@ -215,6 +215,11 @@ public class SanPhamJrame extends javax.swing.JInternalFrame {
         pnlPhanLoaiHang.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         cboLoaiGiay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adidas", "Nike", "Puma", "Converse", " " }));
+        cboLoaiGiay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboLoaiGiayActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlPhanLoaiHangLayout = new javax.swing.GroupLayout(pnlPhanLoaiHang);
         pnlPhanLoaiHang.setLayout(pnlPhanLoaiHangLayout);
@@ -602,6 +607,9 @@ public class SanPhamJrame extends javax.swing.JInternalFrame {
         chonAnh();
     }//GEN-LAST:event_lblHinhSPMouseClicked
 
+    private void cboLoaiGiayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLoaiGiayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboLoaiGiayActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhatHang;

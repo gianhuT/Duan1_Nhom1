@@ -4,22 +4,27 @@
  */
 package View;
 
+import DAO.ThongKeDAO;
+import entity.ThongKe;
+import java.util.ArrayList;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author ASUS
  */
-public class ThongKe extends javax.swing.JInternalFrame {
+public class ThongKeJframe extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form ThongKe
      */
-    public ThongKe() {
+    public ThongKeJframe() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
+        init();
     }
 
     /**
@@ -35,31 +40,32 @@ public class ThongKe extends javax.swing.JInternalFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cboDongSanPham = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cboSoLuongCacSanPham = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnExcelPhanLoai = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPhanLoai = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnDoanhThuExcel = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
+        tblDoanhThu = new javax.swing.JTable();
+        btnThoiGianDoanhThu = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tblThoiGianDoanhThu = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        btnLoc = new javax.swing.JButton();
+        cboDen = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        cboTu = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1200, 624));
         getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
@@ -73,11 +79,16 @@ public class ThongKe extends javax.swing.JInternalFrame {
 
         jPanel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn Dòng Sản Phẩm", "Nike ", "Adidas", "Puma", "Ananas", " " }));
+        cboDongSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn Dòng Sản Phẩm", "Nike ", "Adidas", "Puma", "Ananas", " " }));
+        cboDongSanPham.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboDongSanPhamActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Cách Thống Kê");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Các Dòng Giày Mua Nhiều Nhất", "Các Dòng Giày Mua Ít Nhất", "Các Dòng Giày Doanh Thu Nhiều Nhất", "Các Dòng Giày Doanh Thu Ít Nhất" }));
+        cboSoLuongCacSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Các Dòng Giày Mua Nhiều Nhất", "Các Dòng Giày Mua Ít Nhất", "Các Dòng Giày Doanh Thu Nhiều Nhất", "Các Dòng Giày Doanh Thu Ít Nhất" }));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -85,11 +96,11 @@ public class ThongKe extends javax.swing.JInternalFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cboDongSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(138, 138, 138)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, 0, 217, Short.MAX_VALUE)
+                .addComponent(cboSoLuongCacSanPham, 0, 217, Short.MAX_VALUE)
                 .addGap(27, 27, 27))
         );
         jPanel9Layout.setVerticalGroup(
@@ -97,9 +108,9 @@ public class ThongKe extends javax.swing.JInternalFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboDongSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboSoLuongCacSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -116,9 +127,14 @@ public class ThongKe extends javax.swing.JInternalFrame {
         jLabel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel5.setVerifyInputWhenFocusTarget(false);
 
-        jButton1.setText("EXPORT TO EXCEL");
+        btnExcelPhanLoai.setText("EXPORT TO EXCEL");
+        btnExcelPhanLoai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExcelPhanLoaiMouseClicked(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPhanLoai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -129,7 +145,7 @@ public class ThongKe extends javax.swing.JInternalFrame {
                 "Thời gian", "Tên sản phẩm", "Thương hiệu", "Trạng thái", "Số lượng đã bán", "Đơn giá", "Doanh thu"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblPhanLoai);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -148,7 +164,7 @@ public class ThongKe extends javax.swing.JInternalFrame {
                         .addGap(40, 40, 40)
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(56, 56, 56)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnExcelPhanLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(113, 113, 113)
@@ -167,7 +183,7 @@ public class ThongKe extends javax.swing.JInternalFrame {
                         .addGap(43, 43, 43)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnExcelPhanLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addComponent(jLabel2)))
@@ -195,9 +211,9 @@ public class ThongKe extends javax.swing.JInternalFrame {
         jLabel10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel10.setVerifyInputWhenFocusTarget(false);
 
-        jButton2.setText("EXPORT TO EXCEL");
+        btnDoanhThuExcel.setText("EXPORT TO EXCEL");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblDoanhThu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -208,14 +224,14 @@ public class ThongKe extends javax.swing.JInternalFrame {
                 "Năm", "Tổng số doanh thu", "Tháng có doanh thu cao nhất", "Tháng có doanh thu thấp nhất", "Doanh thu trung bình tháng"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(2).setResizable(false);
+        jScrollPane2.setViewportView(tblDoanhThu);
+        if (tblDoanhThu.getColumnModel().getColumnCount() > 0) {
+            tblDoanhThu.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        jButton3.setText("EXPORT TO EXCEL");
+        btnThoiGianDoanhThu.setText("EXPORT TO EXCEL");
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tblThoiGianDoanhThu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -226,25 +242,57 @@ public class ThongKe extends javax.swing.JInternalFrame {
                 "Thời gian", "Doanh thu", "Số hóa đơn thanh toán"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tblThoiGianDoanhThu);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setText("Doanh Thu 7 Ngày Gần Nhất");
         jLabel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel9.setVerifyInputWhenFocusTarget(false);
 
-        jButton4.setText("Lọc");
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        btnLoc.setText("Lọc");
+
+        jLabel12.setText("Đến");
 
         jLabel11.setText("Từ ");
 
-        jLabel12.setText("Đến");
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(18, 18, 18)
+                .addComponent(cboTu, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cboDen, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnLoc)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLoc)
+                    .addComponent(cboDen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(cboTu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel7)
@@ -254,22 +302,15 @@ public class ThongKe extends javax.swing.JInternalFrame {
                         .addComponent(jLabel8)
                         .addGap(47, 47, 47)
                         .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                        .addComponent(btnDoanhThuExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4)
+                        .addGap(125, 125, 125)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnThoiGianDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(42, 42, 42))
         );
         jPanel3Layout.setVerticalGroup(
@@ -281,21 +322,19 @@ public class ThongKe extends javax.swing.JInternalFrame {
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                    .addComponent(btnDoanhThuExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel11)
-                        .addComponent(jLabel12)
-                        .addComponent(jButton4)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(btnThoiGianDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
 
         jTabbedPane1.addTab("Doanh Thu", jPanel3);
@@ -316,16 +355,24 @@ public class ThongKe extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnExcelPhanLoaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcelPhanLoaiMouseClicked
+        ExcelPhanLoai();
+    }//GEN-LAST:event_btnExcelPhanLoaiMouseClicked
+
+    private void cboDongSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDongSanPhamActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboDongSanPhamActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JButton btnDoanhThuExcel;
+    private javax.swing.JButton btnExcelPhanLoai;
+    private javax.swing.JButton btnLoc;
+    private javax.swing.JButton btnThoiGianDoanhThu;
+    private javax.swing.JComboBox<String> cboDen;
+    private javax.swing.JComboBox<String> cboDongSanPham;
+    private javax.swing.JComboBox<String> cboSoLuongCacSanPham;
+    private javax.swing.JComboBox<String> cboTu;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -339,13 +386,57 @@ public class ThongKe extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JTable tblDoanhThu;
+    private javax.swing.JTable tblPhanLoai;
+    private javax.swing.JTable tblThoiGianDoanhThu;
     // End of variables declaration//GEN-END:variables
+    ThongKeDAO tkDAO = new ThongKeDAO();
+    
+    void init() {
+       
+        fillToTablePhanLoai();
+        fillToTableDoanhThu();
+        fillToTableThoiGianDoanhThu();
+
+    }
+
+    private void ExcelPhanLoai() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void fillToTablePhanLoai() {
+        DefaultTableModel model = (DefaultTableModel) tblPhanLoai.getModel();
+        model.setRowCount(0);
+        try {
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void fillToTableDoanhThu() {
+        DefaultTableModel model = (DefaultTableModel) tblDoanhThu.getModel();
+        model.setRowCount(0);
+        try {
+          
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void fillToTableThoiGianDoanhThu() {
+        DefaultTableModel model = (DefaultTableModel) tblThoiGianDoanhThu.getModel();
+        model.setRowCount(0);
+        try {
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
